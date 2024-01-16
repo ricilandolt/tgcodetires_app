@@ -2,19 +2,31 @@ import React from "react";
 import "./index.css";
 import { useState } from "react";
 import { api } from "../../api/api";
+import RowElement from "../RowElement";
 
 function Herosection() {
   const [tgcode, setTgcode] = useState();
+  const [fronttires, setFronttires] = useState([]);
+  const [rims, setRims] = useState([]);
+  const [reartires, setReartires] = useState([]);
 
   const handleChange = async (e) => {
-    const tgval = "ABA101";
-    const data = await api.get(`tgcodes/?tgcode={tgval}`);
-    console.log("inside");
-    console.log(data);
-    if (e.target.value.length == 6) {
-    }
     setTgcode(e.target.value);
+    try {
+      if (e.target.value.length == 6) {
+        const tgval = e.target.value;
+        const resp = await api.get(`/tgcodes?tgcode=${tgval}`);
+        const data = resp.data[0];
+        const { tires, rims } = data;
+        setFronttires([...tires.filter((obj) => obj.axis == 2)]);
+        setReartires([...tires.filter((obj) => obj.axis == 1)]);
+        setRims(rims);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <>
       <div className="hero-container">
@@ -30,8 +42,13 @@ function Herosection() {
         </div>
 
         <div className="right-container">
+          <div className="background">
+            {[...Array(100).keys()].map((el) => (
+              <RowElement key={"Row" + el} index={el}></RowElement>
+            ))}
+          </div>
+
           <form className="tgform" action="">
-            <div className="intro-text-container"></div>
             <div className="input-container">
               <label className="tgcodelabel" htmlFor="tgcode">
                 Typenschein
@@ -44,15 +61,53 @@ function Herosection() {
                   id="tgcode"
                   type="text"
                   value={tgcode}
+                  autoComplete="off"
                   onChange={(e) => handleChange(e)}
                 />
               </div>
             </div>
-            <p className="missing-text">
-              Fehlt ein Typenschein? Dann tragen sie ihn doch bitte ein, damit
-              auch andere davon profitieren
-            </p>
+
+            <a
+              href="https://tgtires-api-88167eb20fba.herokuapp.com/docs/"
+              className="missing-text-container"
+            >
+              <span className="missing-text">
+                Sie sind Entwickler? Nutzen Sie unsere API
+              </span>
+            </a>
           </form>
+          <div className="tires-rims-container">
+            {fronttires.length > 0 && (
+              <div className="tires-rims-items">
+                <div className="tire-rims-header">Reifen vorne</div>
+                {fronttires.map((obj) => (
+                  <p key={obj.id} className="tiredimension">
+                    {obj.tiredimension}
+                  </p>
+                ))}
+              </div>
+            )}
+            {reartires.length > 0 && (
+              <div className="tires-rims-items">
+                <div className="tire-rims-header">Reifen hinten</div>
+                {reartires.map((obj) => (
+                  <p key={obj.id} className="tiredimension">
+                    {obj.tiredimension}
+                  </p>
+                ))}
+              </div>
+            )}
+            {rims.length > 0 && (
+              <div className="tires-rims-items">
+                <div className="tire-rims-header">Felgen</div>
+                {rims.map((obj) => (
+                  <p key={obj.id} className="tiredimension">
+                    {obj.rimdimenesion}
+                  </p>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

@@ -1,0 +1,18 @@
+.parentelement {
+  padding: 5px;
+}
+
+.element {
+  background-color: gray;
+  border-radius: 10px;
+  width: 3px;
+  height: 3px;
+  transition: transform cubic-bezier(0.1, 0.2, 0.3, 0.4) 250ms;
+  box-shadow: 0 0 10px rgb(255, 207, 84);
+}
+
+.parentelement:hover .element {
+  transform: scale(6);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  background-color: rgb(255, 158, 27);
+}
