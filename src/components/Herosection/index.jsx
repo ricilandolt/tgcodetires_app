@@ -5,7 +5,7 @@ import { api } from "../../api/api";
 import RowElement from "../RowElement";
 
 function Herosection() {
-  const [tgcode, setTgcode] = useState();
+  const [tgcode, setTgcode] = useState("");
   const [fronttires, setFronttires] = useState([]);
   const [rims, setRims] = useState([]);
   const [reartires, setReartires] = useState([]);
