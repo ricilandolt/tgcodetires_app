@@ -9,7 +9,8 @@ function Herosection() {
   const handleChange = async (e) => {
     const tgval = "ABA101";
     const data = await api.get(`tgcodes/?tgcode={tgval}`);
-    console.log(console.log);
+    console.log("inside");
+    console.log(data);
     if (e.target.value.length == 6) {
     }
     setTgcode(e.target.value);
