@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.tgform {
+  position: relative;
+  border: 3px primary solid;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 10%;
+  margin-bottom: 2rem;
+}
+.search-input-container {
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tgcodeinput {
+  color: #000;
+  border: none;
+  height: 100%;
+  outline: none;
+  margin-left: 15px;
+  font-size: 18px;
+}
+.tgcodelabel {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 0.5rem;
+}
+
+.fa-search {
+  color: #000;
+  font-size: 1.5rem;
+}
+
+.hero-section-text {
+  color: #fff;
+  width: 60%;
+  text-align: center;
+}
+
+.intro-text-container {
+  display: flex;
+  position: absolute;
+}
+
+.missing-text {
+  color: #fff;
+  width: 80%;
+}
+
+.left-container {
+  background: linear-gradient(
+    109.6deg,
+    rgb(255, 207, 84) 11.2%,
+    rgb(255, 158, 27) 91.1%
+  );
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1rem;
+}
+.left-content {
+  margin-top: auto;
+  display: flex;
+  font-size: 1.3em;
+  font-weight: bolder;
+  letter-spacing: -0.02em;
+}
+.right-container {
+  background: #000;
+  height: 100%;
+  width: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.maintitle {
+  font-size: 5em;
+  line-height: 0.8;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  width: 40%;
+}
