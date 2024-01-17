@@ -196,7 +196,9 @@ body {
     font-size: 24px;
   }
   .left-content {
-    font-size: 12px;
+    font-size: 14px;
+    line-height: 15px;
+    text-align: end;
   }
   .input-container {
     margin-bottom: 4rem;
